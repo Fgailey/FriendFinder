@@ -1,7 +1,14 @@
 const dataFriends = require('../data/friends')
 
 let friendCompare = (f1, f2) =>{
-        
+        let friend1 = f1.scores
+        let friend2 = f2.scores
+        let diff = 0;
+        for (let i in friend1) {
+            console.log(i)
+            diff += Math.abs(friend1[i] - friend2[i])
+        }
+        return diff
 }
 
 
@@ -13,14 +20,15 @@ module.exports = function (app) {
 
     // Catch all for home page
     app.post("/api/friends", function (req, res) {
-        let data = req.body
+        
+
+        
 
 
 
 
 
-
-        dataFriends.push(data)
-        console.log(data)
+        dataFriends.push(req.body)
+        console.log(req.body)
     });
 };
