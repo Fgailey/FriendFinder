@@ -1,0 +1,28 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "Friend Finder hw",
+  "main": "server.js",
+  "scripts": {
+    "test": "friendFinder",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fgailey/FriendFinder.git"
+  },
+  "keywords": [
+    "Friend",
+    "Finder"
+  ],
+  "author": "Foster",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fgailey/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/Fgailey/FriendFinder#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
