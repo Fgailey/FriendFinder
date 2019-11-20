@@ -1,12 +1,10 @@
 const dataFriends = require('../data/friends')
 
 let friendCompare = (f1, f2) =>{
-        let friend1 = f1.scores
-        let friend2 = f2.scores
         let diff = 0;
-        for (let i in friend1) {
+        for (let i in f1) {
             console.log(i)
-            diff += Math.abs(friend1[i] - friend2[i])
+            diff += Math.abs(parseInt(f1[i]) - f2[i])
         }
         return diff
 }
@@ -20,7 +18,26 @@ module.exports = function (app) {
 
     // Catch all for home page
     app.post("/api/friends", function (req, res) {
-        
+        let friendNew = req.body;
+        let bestScore = 41;
+        let bestMatch;
+
+        //Compare friends
+        for (let i in dataFriends) {
+            let score = friendCompare(friendNew.scores, dataFriends[i].scores);
+            console.log("Score for " + dataFriends[i].name + ": " + score);
+            if (score < bestScore) {
+                bestMatch = dataFriends[i];
+                bestScore = score;
+            }
+        }
+
+        console.log("Best Match:");
+        console.log(bestMatch);
+
+        // Return best match
+        dataFriends.push(friendNew);
+        res.json(bestMatch);
 
         
 
@@ -28,7 +45,7 @@ module.exports = function (app) {
 
 
 
-        dataFriends.push(req.body)
+        // dataFriends.push(req.body)
         console.log(req.body)
     });
 };
